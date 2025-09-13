@@ -33,28 +33,29 @@ export default function Footer() {
     { label: 'Rust' },
     { label: 'Cairo' },
     { label: 'Node.js' },
+    { label: 'Java'},
     { label: 'Python' },
     { label: 'Cypress' },
-    { label: 'Playwright' },
+    { label: 'Appium' },
     { label: 'Web3.js' },
   ]
 
   const socialLinks = [
     {
       icon: <Github size={20} />,
-      href: 'https://github.com/jojolola',
+      href: 'https://github.com/Martins-O',
       label: 'GitHub',
       color: 'hover:text-gray-400'
     },
     {
       icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/martins-jojolola',
+      href: 'https://linkedin.com/in/martins-o-jojolola',
       label: 'LinkedIn',
       color: 'hover:text-blue-400'
     },
     {
       icon: <Twitter size={20} />,
-      href: 'https://twitter.com/jojolola_dev',
+      href: 'https://twitter.com/jojoOfETH',
       label: 'Twitter',
       color: 'hover:text-blue-400'
     },

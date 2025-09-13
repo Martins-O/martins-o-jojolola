@@ -35,13 +35,13 @@ export default function FeaturedSkills() {
   const skillCategories = [
     {
       title: 'Quality Assurance',
-      skills: ['Test Automation', 'Cypress', 'Playwright', 'API Testing'],
+      skills: ['Test Automation', 'Cypress', 'Appium', 'API Testing'],
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50 dark:bg-blue-900/20'
     },
     {
       title: 'Backend Development',
-      skills: ['Node.js', 'Python', 'PostgreSQL', 'Microservices'],
+      skills: ['Node.js', 'Python', 'Java', 'TypeScript', 'JavaScript', 'MongoDB', 'PostgreSQL', 'Microservices'],
       color: 'from-green-500 to-emerald-500',
       bgColor: 'bg-green-50 dark:bg-green-900/20'
     },
@@ -59,7 +59,12 @@ export default function FeaturedSkills() {
     { name: 'Solana', icon: '🌟' },
     { name: 'StarkNet', icon: '🌀' },
     { name: 'BSC', icon: '🟡' },
-    { name: 'Arbitrum', icon: '🔵' }
+    { name: 'Arbitrum', icon: '🔵' },
+    { name: 'Avalanche', icon: '⛰️' },
+    { name: 'Optimism', icon: '🟠' },
+    { name: 'Lisk', icon: '🟣' },
+    { name: 'somnia', icon: '🟢' },
+    { name: 'Ethereum Classic', icon: '⛓️' },
   ]
 
   return (

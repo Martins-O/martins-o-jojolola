@@ -16,14 +16,14 @@ export async function POST(request: NextRequest) {
     // Rate limiting
     const clientIP = getClientIP(request)
     const rateLimitResult = rateLimit(clientIP, 3, 15 * 60 * 1000) // 3 requests per 15 minutes
-    
+
     if (!rateLimitResult.success) {
       return NextResponse.json(
-        { 
+        {
           error: `Too many requests. Please try again in ${Math.ceil(rateLimitResult.resetTime / 60)} minutes.`,
           rateLimitExceeded: true
         },
-        { 
+        {
           status: 429,
           headers: {
             'X-RateLimit-Limit': rateLimitResult.limit.toString(),
@@ -35,10 +35,10 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    
+
     // Validate the request body
     const result = contactFormSchema.safeParse(body)
-    
+
     if (!result.success) {
       return NextResponse.json(
         { error: 'Validation failed', details: result.error.issues },
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     const spamKeywords = ['viagra', 'casino', 'loan', 'bitcoin investment', 'guaranteed profit', 'click here', 'limited time']
     const messageText = `${name} ${email} ${subject} ${message}`.toLowerCase()
     const hasSpam = spamKeywords.some(keyword => messageText.includes(keyword))
-    
+
     if (hasSpam) {
       return NextResponse.json(
         { error: 'Message flagged as potential spam. Please contact directly via email.' },
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     // Check for suspicious patterns
     const urlPattern = /https?:\/\/[^\s]+/gi
     const urlCount = (message.match(urlPattern) || []).length
-    
+
     if (urlCount > 2) {
       return NextResponse.json(
         { error: 'Too many URLs in message. Please contact directly via email.' },
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
     }
 
     const timestamp = new Date().toISOString()
-    
+
     // Prepare email data
     const emailData = {
       name,
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email to yourself
     const emailResult = await emailService.sendContactEmail(emailData)
-    
+
     if (!emailResult.success) {
       console.error('Failed to send notification email:', emailResult.error)
       // Don't fail the request if email fails, but log it
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to user
     const confirmationResult = await emailService.sendConfirmationEmail(email, name)
-    
+
     if (!confirmationResult.success) {
       console.error('Failed to send confirmation email:', confirmationResult.error)
     }
@@ -109,11 +109,11 @@ export async function POST(request: NextRequest) {
     await new Promise(resolve => setTimeout(resolve, 800))
 
     return NextResponse.json(
-      { 
+      {
         message: 'Thank you for your message! I\'ll get back to you within 24 hours.',
-        success: true 
+        success: true
       },
-      { 
+      {
         status: 200,
         headers: {
           'X-RateLimit-Limit': rateLimitResult.limit.toString(),

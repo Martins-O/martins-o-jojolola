@@ -49,9 +49,8 @@ export default function Skills() {
         { name: 'Manual Testing', level: 90 },
         { name: 'API Testing', level: 90 },
         { name: 'Performance Testing', level: 85 },
-        { name: 'Cypress', level: 88 },
-        { name: 'Playwright', level: 85 },
-        { name: 'Jest', level: 90 },
+        { name: 'Cypress', level: 90 },
+        { name: 'pytest', level: 90 },
         { name: 'Postman', level: 92 },
       ]
     },
@@ -62,7 +61,13 @@ export default function Skills() {
       skills: [
         { name: 'Node.js', level: 90 },
         { name: 'Python', level: 85 },
-        { name: 'Java', level: 80 },
+        { name: 'Java', level: 85 },
+        { name: 'TypeScript', level: 80 },
+        { name: 'SQL', level: 88 },
+        { name: 'MySQL', level: 90 },
+        { name: 'JavaScript', level: 90 },
+        { name: 'Django', level: 90 },
+        { name: 'FastAPI', level: 90 },
         { name: 'REST APIs', level: 95 },
         { name: 'GraphQL', level: 85 },
         { name: 'Microservices', level: 85 },
@@ -110,9 +115,7 @@ export default function Skills() {
         { name: 'CI/CD', level: 85 },
         { name: 'GitHub Actions', level: 90 },
         { name: 'Kubernetes', level: 75 },
-        { name: 'Terraform', level: 70 },
         { name: 'Redis', level: 85 },
-        { name: 'Nginx', level: 80 },
       ]
     },
     {
@@ -121,26 +124,31 @@ export default function Skills() {
       color: 'from-teal-500 to-green-500',
       skills: [
         { name: 'Selenium', level: 88 },
-        { name: 'K6 (Load Testing)', level: 85 },
+        { name: 'Appium', level: 85 },
         { name: 'Artillery', level: 80 },
         { name: 'Mocha/Chai', level: 90 },
         { name: 'TestNG', level: 85 },
         { name: 'Cucumber', level: 80 },
-        { name: 'Appium', level: 75 },
         { name: 'BDD/TDD', level: 90 },
+        { name: 'Jest', level: 85 },
+        { name: 'Pytest', level: 85 },
+        { name: 'JMeter', level: 88 },
       ]
     },
   ]
 
-  const blockchainNetworks = [
+   const blockchainNetworks = [
     { name: 'Ethereum', icon: '⟠' },
     { name: 'Polygon', icon: '🔷' },
-    { name: 'BSC', icon: '🟡' },
     { name: 'Solana', icon: '🌟' },
     { name: 'StarkNet', icon: '🌀' },
+    { name: 'BSC', icon: '🟡' },
     { name: 'Arbitrum', icon: '🔵' },
-    { name: 'Optimism', icon: '🔴' },
-    { name: 'Near', icon: '🌈' },
+    { name: 'Avalanche', icon: '⛰️' },
+    { name: 'Optimism', icon: '🟠' },
+    { name: 'Lisk', icon: '🟣' },
+    { name: 'somnia', icon: '🟢' },
+    { name: 'Ethereum Classic', icon: '⛓️' },
   ]
 
   return (

@@ -34,10 +34,10 @@ export default function About() {
   }
 
   const stats = [
-    { number: '100+', label: 'Projects Tested' },
-    { number: '5+', label: 'Years QA Experience' },
-    { number: '50+', label: 'Smart Contracts Deployed' },
-    { number: '99.9%', label: 'Bug Detection Rate' },
+    { number: '30+', label: 'Projects Tested' },
+    { number: '3+', label: 'Years QA Experience' },
+    { number: '30+', label: 'Smart Contracts Deployed' },
+    { number: '90.9%', label: 'Bug Detection Rate' },
   ]
 
   const features = [

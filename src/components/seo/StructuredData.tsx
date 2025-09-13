@@ -5,7 +5,7 @@ export default function StructuredData() {
     "name": "Martins O Jojolola",
     "jobTitle": "Quality Assurance Engineer, Backend Developer, Blockchain Developer",
     "description": "Experienced software quality assurance engineer with expertise in backend development and blockchain technologies from Lagos, Nigeria.",
-    "url": "https://martins-jojolola.dev",
+    "url": "https://martins-jojolola.vercel.app",
     "email": "jojololamartins686@gmail.com",
     "telephone": "+234-814-658-7069",
     "address": {
@@ -14,9 +14,9 @@ export default function StructuredData() {
       "addressCountry": "Nigeria"
     },
     "sameAs": [
-      "https://github.com/jojolola",
-      "https://linkedin.com/in/martins-jojolola",
-      "https://twitter.com/jojolola_dev"
+      "https://github.com/Martins-O",
+      "https://linkedin.com/in/martins-o-jojolola",
+      "https://twitter.com/JojoOfETH"
     ],
     "knowsAbout": [
       "Quality Assurance",
@@ -30,7 +30,12 @@ export default function StructuredData() {
       "Python",
       "Smart Contracts",
       "DeFi Protocols",
-      "Web3 Development"
+      "Web3 Development",
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "Microservices",
+      "API Development"
     ],
     "alumniOf": "Software Engineering",
     "workLocation": {
@@ -68,7 +73,7 @@ export default function StructuredData() {
     "@type": "WebSite",
     "name": "Martins O Jojolola Portfolio",
     "description": "Professional portfolio showcasing QA expertise, backend development, and blockchain innovation",
-    "url": "https://martins-jojolola.dev",
+    "url": "https://martins-jojolola.vercel.app",
     "author": {
       "@type": "Person",
       "name": "Martins O Jojolola"

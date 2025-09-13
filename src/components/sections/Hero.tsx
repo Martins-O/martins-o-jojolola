@@ -106,7 +106,7 @@ export default function Hero() {
               className="flex gap-6 items-center justify-center lg:justify-start"
             >
               <a
-                href="https://github.com/jojolola"
+                href="https://github.com/Martins-O"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
@@ -114,7 +114,7 @@ export default function Hero() {
                 <Github size={24} />
               </a>
               <a
-                href="https://linkedin.com/in/martins-jojolola"
+                href="https://linkedin.com/in/martins-o-jojolola"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"

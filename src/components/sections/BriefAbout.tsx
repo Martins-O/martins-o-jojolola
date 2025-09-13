@@ -61,10 +61,10 @@ export default function BriefAbout() {
   ]
 
   const stats = [
-    { number: '5+', label: 'Years Experience' },
-    { number: '100+', label: 'Projects Tested' },
-    { number: '50+', label: 'Smart Contracts' },
-    { number: '99.9%', label: 'Bug Detection Rate' }
+    { number: '3+', label: 'Years Experience' },
+    { number: '30+', label: 'Projects Tested' },
+    { number: '30+', label: 'Smart Contracts' },
+    { number: '90.9%', label: 'Bug Detection Rate' }
   ]
 
   return (

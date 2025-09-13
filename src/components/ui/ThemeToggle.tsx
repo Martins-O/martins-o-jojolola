@@ -10,24 +10,36 @@ export default function ThemeToggle() {
 
   const initializeTheme = useCallback(() => {
     try {
-      const savedTheme = localStorage.getItem('theme')
-      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const shouldBeDark = savedTheme === 'dark' || (!savedTheme && systemPreference)
+      // Check if theme was already set by our script
+      const currentlyDark = document.documentElement.classList.contains('dark')
+      setIsDark(currentlyDark)
       
-      setIsDark(shouldBeDark)
-      
-      if (shouldBeDark) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
+      // If not set, determine and apply theme
+      if (!document.documentElement.getAttribute('data-theme')) {
+        const savedTheme = localStorage.getItem('theme')
+        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && systemPreference)
+        
+        setIsDark(shouldBeDark)
+        
+        if (shouldBeDark) {
+          document.documentElement.classList.add('dark')
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
       }
     } catch (error) {
       console.warn('Failed to initialize theme:', error)
       // Fallback to system preference
-      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setIsDark(systemPreference)
+      const systemPreference = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      setIsDark(systemPreference || false)
       if (systemPreference) {
         document.documentElement.classList.add('dark')
+        document.documentElement.setAttribute('data-theme', 'dark')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light')
       }
     }
   }, [])
@@ -62,19 +74,24 @@ export default function ThemeToggle() {
   const toggleTheme = useCallback(() => {
     try {
       const newTheme = !isDark
+      const themeValue = newTheme ? 'dark' : 'light'
+      
       setIsDark(newTheme)
       
+      // Update DOM
       if (newTheme) {
         document.documentElement.classList.add('dark')
-        localStorage.setItem('theme', 'dark')
       } else {
         document.documentElement.classList.remove('dark')
-        localStorage.setItem('theme', 'light')
       }
+      
+      // Update data attribute and localStorage
+      document.documentElement.setAttribute('data-theme', themeValue)
+      localStorage.setItem('theme', themeValue)
       
       // Trigger a custom event for other components that might need to know
       window.dispatchEvent(new CustomEvent('themeChanged', { 
-        detail: { theme: newTheme ? 'dark' : 'light' } 
+        detail: { theme: themeValue } 
       }))
     } catch (error) {
       console.warn('Failed to toggle theme:', error)

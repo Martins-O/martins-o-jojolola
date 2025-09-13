@@ -91,19 +91,19 @@ export default function Contact() {
     {
       icon: <Github size={20} />,
       label: 'GitHub',
-      href: 'https://github.com/jojolola',
+      href: 'https://github.com/Martins-O',
       color: 'hover:text-gray-900 dark:hover:text-gray-100'
     },
     {
       icon: <Linkedin size={20} />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/martins-jojolola',
+      href: 'https://linkedin.com/in/martins-o-jojolola',
       color: 'hover:text-blue-600'
     },
     {
       icon: <Twitter size={20} />,
       label: 'Twitter',
-      href: 'https://twitter.com/jojolola_dev',
+      href: 'https://twitter.com/jojoOfETH',
       color: 'hover:text-blue-400'
     },
     {
