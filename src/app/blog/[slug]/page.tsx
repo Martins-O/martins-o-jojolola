@@ -6,7 +6,6 @@ import { Calendar, Clock, User, ArrowLeft, Github, ExternalLink } from 'lucide-r
 import { getBlogPost, getAllBlogSlugs } from '@/lib/blog'
 import { BlogPostStructuredData } from '@/components/SEO/StructuredData'
 import ShareButton from '@/components/ui/ShareButton'
-import AnimatedContent from '@/components/ui/AnimatedContent'
 
 interface BlogPostPageProps {
   params: {

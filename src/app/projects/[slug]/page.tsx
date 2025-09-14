@@ -171,8 +171,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="lg:col-span-2 space-y-12">
             {/* Overview */}
             <section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
                           >
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Project Overview</h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -185,8 +183,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Challenge */}
             {project.challenge && (
               <section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                               >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Challenge</h2>
                 <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 p-6 rounded-lg">
@@ -200,8 +196,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Solution */}
             {project.solution && (
               <section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                               >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Solution</h2>
                 <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 rounded-lg">
@@ -215,8 +209,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Key Features */}
             {project.features && project.features.length > 0 && (
               <section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                               >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -233,8 +225,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Results */}
             {project.results && project.results.length > 0 && (
               <section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                               >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Results & Impact</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
