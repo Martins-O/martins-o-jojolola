@@ -81,7 +81,7 @@ export default function FeaturedProjects() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredProjects.map((project) => (
               <motion.div
-                key={project.id}
+                key={project.slug}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"

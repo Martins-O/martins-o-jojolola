@@ -10,7 +10,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import SkipLinks from "@/components/ui/SkipLinks";
 import ThemeScript from "@/components/ui/ThemeScript";
 import { GoogleAnalytics } from "@/lib/analytics";
-import StructuredData from "@/components/seo/StructuredData";
+import { PersonStructuredData, WebsiteStructuredData } from "@/components/SEO/StructuredData";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -107,7 +107,31 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white`} suppressHydrationWarning>
         <ThemeScript />
         <GoogleAnalytics />
-        <StructuredData />
+        <PersonStructuredData 
+          name="Martins O Jojolola"
+          jobTitle="Quality Assurance Engineer & Backend Developer"
+          description="Expert QA Engineer, Backend Developer & Blockchain Developer from Lagos, Nigeria. Specializing in test automation, backends, and smart contracts."
+          url="https://martins-jojolola.dev"
+          sameAs={[
+            "https://github.com/jojolola",
+            "https://linkedin.com/in/martinsjojolola",
+            "https://twitter.com/jojolola_dev"
+          ]}
+          skills={[
+            "Quality Assurance",
+            "Test Automation",
+            "Backend Development",
+            "Blockchain Development",
+            "Cypress",
+            "Playwright",
+            "Node.js",
+            "Python",
+            "Solidity",
+            "Rust",
+            "Smart Contracts"
+          ]}
+        />
+        <WebsiteStructuredData />
         <SkipLinks />
         <ErrorBoundary>
           <Navigation />

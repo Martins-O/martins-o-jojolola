@@ -29,11 +29,6 @@ const services = [
       'Team training & knowledge transfer',
       'Quality metrics & KPI definition'
     ],
-    pricing: {
-      consultation: '$150/hour',
-      project: 'From $3,000',
-      retainer: '$2,500/month'
-    },
     timeline: '2-8 weeks',
     deliverables: [
       'Test automation framework',
@@ -56,11 +51,6 @@ const services = [
       'Authentication & authorization',
       'Performance optimization & monitoring'
     ],
-    pricing: {
-      consultation: '$120/hour',
-      project: 'From $5,000',
-      retainer: '$4,000/month'
-    },
     timeline: '4-12 weeks',
     deliverables: [
       'Production-ready APIs',
@@ -83,11 +73,6 @@ const services = [
       'Cross-chain integration solutions',
       'Web3 frontend integration'
     ],
-    pricing: {
-      consultation: '$200/hour',
-      project: 'From $8,000',
-      retainer: '$6,000/month'
-    },
     timeline: '6-16 weeks',
     deliverables: [
       'Audited smart contracts',
@@ -211,35 +196,9 @@ export default function Services() {
                     </div>
                   </div>
 
-                  {/* Pricing & Timeline */}
+                  {/* Timeline & CTA */}
                   <div className="lg:w-80">
                     <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                          Investment Options:
-                        </h4>
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-600 dark:text-gray-300">Consultation</span>
-                            <span className="font-semibold text-gray-900 dark:text-white">
-                              {service.pricing.consultation}
-                            </span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-600 dark:text-gray-300">Project</span>
-                            <span className="font-semibold text-gray-900 dark:text-white">
-                              {service.pricing.project}
-                            </span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-600 dark:text-gray-300">Monthly Retainer</span>
-                            <span className="font-semibold text-gray-900 dark:text-white">
-                              {service.pricing.retainer}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
                       <div className="mb-6">
                         <div className="flex items-center gap-2 mb-2">
                           <Clock className="w-4 h-4 text-gray-500" />

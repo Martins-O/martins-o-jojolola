@@ -2,9 +2,11 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Calendar, Clock, User, ArrowLeft, Share2, Github, ExternalLink } from 'lucide-react'
+import { Calendar, Clock, User, ArrowLeft, Github, ExternalLink } from 'lucide-react'
 import { getBlogPost, getAllBlogSlugs } from '@/lib/blog'
+import { BlogPostStructuredData } from '@/components/SEO/StructuredData'
+import ShareButton from '@/components/ui/ShareButton'
+import AnimatedContent from '@/components/ui/AnimatedContent'
 
 interface BlogPostPageProps {
   params: {
@@ -56,14 +58,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <BlogPostStructuredData 
+        post={post}
+        authorName="Martins O Jojolola"
+        authorUrl="https://martins-jojolola.dev"
+      />
+      <main className="min-h-screen pt-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Navigation */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Link
             href="/blog"
             className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
@@ -71,12 +75,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ArrowLeft size={20} className="mr-2" />
             Back to Blog
           </Link>
-        </motion.div>
+        </div>
 
         {/* Article Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <header
           className="mb-12"
         >
           <div className="mb-6">
@@ -113,23 +115,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Share Button */}
           <div className="flex items-center gap-4 mb-8">
-            <button
-              onClick={() => {
-                if (navigator.share) {
-                  navigator.share({
-                    title: post.title,
-                    text: post.excerpt,
-                    url: window.location.href,
-                  })
-                } else {
-                  navigator.clipboard.writeText(window.location.href)
-                }
-              }}
-              className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              <Share2 size={16} className="mr-2" />
-              Share
-            </button>
+            <ShareButton 
+              title={post.title}
+              text={post.excerpt}
+            />
             
             {post.githubUrl && (
               <Link
@@ -158,10 +147,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Cover Image */}
           {post.coverImage && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+            <div
               className="relative aspect-video rounded-2xl overflow-hidden mb-12 shadow-lg"
             >
               <Image
@@ -171,26 +157,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 className="object-cover"
                 priority
               />
-            </motion.div>
+            </div>
           )}
-        </motion.header>
+        </header>
 
         {/* Article Content */}
-        <motion.article
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+        <article
           className="prose prose-lg dark:prose-invert max-w-none mb-12"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mb-12"
+          <div
+              className="mb-12"
           >
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
@@ -203,14 +183,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+        <div
           className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -233,8 +210,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               View Services
             </Link>
           </div>
-        </motion.div>
-      </div>
-    </main>
+        </div>
+        </div>
+      </main>
+    </>
   )
 }

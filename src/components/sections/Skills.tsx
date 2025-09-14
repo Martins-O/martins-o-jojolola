@@ -41,63 +41,57 @@ export default function Skills() {
 
   const skillCategories = [
     {
+      title: 'Programming Languages',
+      icon: <Code2 size={32} />,
+      color: 'from-blue-500 to-cyan-500',
+      skills: [
+        { name: 'JavaScript', level: 90 },
+        { name: 'TypeScript', level: 85 },
+        { name: 'Python', level: 85 },
+        { name: 'Java', level: 85 },
+        { name: 'Solidity', level: 90 },
+        { name: 'Rust', level: 85 },
+        { name: 'Cairo', level: 80 },
+        { name: 'SQL', level: 88 },
+      ]
+    },
+    {
       title: 'Quality Assurance',
       icon: <TestTube size={32} />,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-green-500 to-emerald-500',
       skills: [
         { name: 'Test Automation', level: 95 },
         { name: 'Manual Testing', level: 90 },
         { name: 'API Testing', level: 90 },
         { name: 'Performance Testing', level: 85 },
-        { name: 'Cypress', level: 90 },
-        { name: 'pytest', level: 90 },
-        { name: 'Postman', level: 92 },
+        { name: 'BDD/TDD', level: 90 },
+        { name: 'Smart Contract Testing', level: 88 },
+        { name: 'Load Testing', level: 85 },
       ]
     },
     {
       title: 'Backend Development',
       icon: <Server size={32} />,
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-purple-500 to-pink-500',
       skills: [
         { name: 'Node.js', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'Java', level: 85 },
-        { name: 'TypeScript', level: 80 },
-        { name: 'SQL', level: 88 },
-        { name: 'MySQL', level: 90 },
-        { name: 'JavaScript', level: 90 },
         { name: 'Django', level: 90 },
         { name: 'FastAPI', level: 90 },
         { name: 'REST APIs', level: 95 },
         { name: 'GraphQL', level: 85 },
         { name: 'Microservices', level: 85 },
-        { name: 'PostgreSQL', level: 90 },
-        { name: 'MongoDB', level: 88 },
-      ]
-    },
-    {
-      title: 'Blockchain Development',
-      icon: <Shield size={32} />,
-      color: 'from-purple-500 to-pink-500',
-      skills: [
-        { name: 'Solidity', level: 90 },
-        { name: 'Rust', level: 85 },
-        { name: 'Cairo', level: 80 },
         { name: 'Smart Contracts', level: 88 },
         { name: 'DeFi Protocols', level: 85 },
-        { name: 'Web3.js/Ethers.js', level: 90 },
-        { name: 'Hardhat/Foundry', level: 85 },
-        { name: 'OpenZeppelin', level: 88 },
       ]
     },
     {
-      title: 'Web3 Frontend',
-      icon: <Code2 size={32} />,
+      title: 'Frontend & Web3',
+      icon: <Shield size={32} />,
       color: 'from-orange-500 to-red-500',
       skills: [
         { name: 'React', level: 90 },
         { name: 'Next.js', level: 88 },
-        { name: 'TypeScript', level: 90 },
+        { name: 'Web3.js/Ethers.js', level: 90 },
         { name: 'Wagmi', level: 85 },
         { name: 'RainbowKit', level: 85 },
         { name: 'Web3 Integration', level: 88 },
@@ -106,33 +100,33 @@ export default function Skills() {
       ]
     },
     {
-      title: 'DevOps & Cloud',
-      icon: <Layers size={32} />,
+      title: 'Tools & Frameworks',
+      icon: <Database size={32} />,
       color: 'from-indigo-500 to-blue-500',
+      skills: [
+        { name: 'Cypress', level: 90 },
+        { name: 'Playwright', level: 88 },
+        { name: 'Selenium', level: 88 },
+        { name: 'Hardhat/Foundry', level: 85 },
+        { name: 'OpenZeppelin', level: 88 },
+        { name: 'Postman', level: 92 },
+        { name: 'Jest', level: 85 },
+        { name: 'Pytest', level: 85 },
+      ]
+    },
+    {
+      title: 'DevOps & Infrastructure',
+      icon: <Layers size={32} />,
+      color: 'from-teal-500 to-green-500',
       skills: [
         { name: 'AWS', level: 85 },
         { name: 'Docker', level: 88 },
         { name: 'CI/CD', level: 85 },
         { name: 'GitHub Actions', level: 90 },
-        { name: 'Kubernetes', level: 75 },
+        { name: 'PostgreSQL', level: 90 },
+        { name: 'MongoDB', level: 88 },
+        { name: 'MySQL', level: 90 },
         { name: 'Redis', level: 85 },
-      ]
-    },
-    {
-      title: 'Testing Tools',
-      icon: <Database size={32} />,
-      color: 'from-teal-500 to-green-500',
-      skills: [
-        { name: 'Selenium', level: 88 },
-        { name: 'Appium', level: 85 },
-        { name: 'Artillery', level: 80 },
-        { name: 'Mocha/Chai', level: 90 },
-        { name: 'TestNG', level: 85 },
-        { name: 'Cucumber', level: 80 },
-        { name: 'BDD/TDD', level: 90 },
-        { name: 'Jest', level: 85 },
-        { name: 'Pytest', level: 85 },
-        { name: 'JMeter', level: 88 },
       ]
     },
   ]

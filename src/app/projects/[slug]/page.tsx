@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { 
   ArrowLeft, 
   Calendar, 
@@ -16,6 +15,7 @@ import {
   Zap
 } from 'lucide-react'
 import { getProject, getAllProjectSlugs } from '@/lib/projects'
+import { ProjectStructuredData } from '@/components/SEO/StructuredData'
 
 interface ProjectPageProps {
   params: {
@@ -65,12 +65,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <ProjectStructuredData 
+        project={project}
+        authorName="Martins O Jojolola"
+        authorUrl="https://martins-jojolola.dev"
+      />
+      <main className="min-h-screen pt-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Navigation */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+        <div
           className="mb-8"
         >
           <Link
@@ -80,12 +84,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <ArrowLeft size={20} className="mr-2" />
             Back to Projects
           </Link>
-        </motion.div>
+        </div>
 
         {/* Project Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <header
           className="mb-12"
         >
           <div className="mb-6">
@@ -149,10 +151,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Cover Image */}
           {project.coverImage && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+            <div
               className="relative aspect-video rounded-2xl overflow-hidden mb-12 shadow-lg"
             >
               <Image
@@ -162,67 +161,63 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 className="object-cover"
                 priority
               />
-            </motion.div>
+            </div>
           )}
-        </motion.header>
+        </header>
 
         {/* Project Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
             {/* Overview */}
-            <motion.section
+            <section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
+                          >
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Project Overview</h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {project.overview}
                 </p>
               </div>
-            </motion.section>
+            </section>
 
             {/* Challenge */}
             {project.challenge && (
-              <motion.section
+              <section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
+                              >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Challenge</h2>
                 <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 p-6 rounded-lg">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Solution */}
             {project.solution && (
-              <motion.section
+              <section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
+                              >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">The Solution</h2>
                 <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-400 p-6 rounded-lg">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {project.solution}
                   </p>
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Key Features */}
             {project.features && project.features.length > 0 && (
-              <motion.section
+              <section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
+                              >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {project.features.map((feature, index) => (
@@ -232,16 +227,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Results */}
             {project.results && project.results.length > 0 && (
-              <motion.section
+              <section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-              >
+                              >
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Results & Impact</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {project.results.map((result, index) => (
@@ -256,18 +250,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
           </div>
 
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Tech Stack */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg"
+            <div
+                            className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg"
             >
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Zap className="w-5 h-5 mr-2 text-yellow-500" />
@@ -283,14 +274,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Project Details */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg"
+            <div
+                            className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg"
             >
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Project Details</h3>
               <div className="space-y-3 text-sm">
@@ -311,16 +299,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <span className="text-gray-900 dark:text-white font-medium">{project.role}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center"
+        <div
+                    className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Interested in Similar Results?
@@ -342,8 +327,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               View More Projects
             </Link>
           </div>
-        </motion.div>
-      </div>
-    </main>
+        </div>
+        </div>
+      </main>
+    </>
   )
 }
