@@ -238,11 +238,10 @@ Hi ${name},
 Thank you for reaching out through my portfolio website. I've received your message and will get back to you within 24 hours.
 
 In the meantime, feel free to:
-- Check out my projects: https://martins-jojolola.dev/projects
+- Check out my projects: https://martins-jojolola.vercel.app/projects
 - Read my technical articles: https://martins-jojolola.dev/blog
 - Connect with me on LinkedIn: https://linkedin.com/in/martins-jojolola
-- View my GitHub: https://github.com/martins-jojolola
-
+- View my GitHub: https://github.com/martins-o
 Best regards,
 Martins O Jojolola
 QA Engineer | Backend Developer | Blockchain Developer

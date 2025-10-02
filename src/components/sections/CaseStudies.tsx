@@ -51,7 +51,7 @@ export default function CaseStudies() {
         "Zero security vulnerabilities",
         "300+ daily active users"
       ],
-      technologies: ["Solidity", "Hardhat", "OpenZeppelin", "Ethereum", "Web3.js"],
+      technologies: ["Solidity", "Foundry", "OpenZeppelin", "Ethereum", "Web3.js"],
       slug: "defi-yield-farming-protocol"
     },
     {

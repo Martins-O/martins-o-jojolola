@@ -143,6 +143,8 @@ export default function Skills() {
     { name: 'Lisk', icon: '🟣' },
     { name: 'somnia', icon: '🟢' },
     { name: 'Ethereum Classic', icon: '⛓️' },
+    { name: 'Somnia', icon: '⛓️' },
+    { name: 'Base Sepolia', icon: '🟡' },
   ]
 
   return (

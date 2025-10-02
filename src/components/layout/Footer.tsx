@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUp } from 'lucide-react'
+import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUp, Icon } from 'lucide-react'
+import { i } from 'framer-motion/client'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'auto' })
   }
 
   const quickLinks = [
@@ -64,6 +65,12 @@ export default function Footer() {
       href: 'mailto:jojololamartins686@gmail.com',
       label: 'Email',
       color: 'hover:text-red-400'
+    },
+    {
+      Icon: <Phone size={20} />,
+      href: 'tel:2348146587069',
+      label: 'WhatsApp',
+      color: 'hover:text-green-400'
     }
   ]
 

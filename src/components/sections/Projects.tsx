@@ -41,88 +41,88 @@ export default function Projects() {
       description: 'A decentralized yield farming protocol built on Ethereum with smart contracts for liquidity mining, staking rewards, and governance token distribution.',
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop',
       category: 'blockchain',
-      tags: ['Solidity', 'Hardhat', 'OpenZeppelin', 'Web3.js', 'React'],
+      tags: ['Solidity', 'Foundry', 'OpenZeppelin', 'Web3.js', 'React'],
       demoUrl: 'https://defi-protocol.example.com',
-      githubUrl: 'https://github.com/jojolola/defi-yield-farming',
-      features: ['Smart Contracts', 'Liquidity Mining', 'Governance', 'Automated Testing']
+      githubUrl: 'https://github.com/Martins-O/defi-yield-farming-protocol',
+      features: ['Smart Contracts', 'Liquidity Mining', 'Governance']
     },
     {
       id: 2,
-      title: 'Automated Testing Framework',
-      description: 'A comprehensive test automation framework for web applications with parallel execution, detailed reporting, and CI/CD integration.',
+      title: 'Credisom lending protocol',
+      description: "Credisomnia is a revolutionary DeFi platform that bridges traditional credit scoring with cutting-edge blockchain technology. Built on Somnia's high-performance blockchain, it offers real-time credit scoring, dynamic lending rates, and soulbound NFT-based credit identity that evolves with your DeFi activities.",
       image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=400&fit=crop',
-      category: 'qa',
-      tags: ['Cypress', 'Playwright', 'Jest', 'GitHub Actions', 'Docker'],
-      demoUrl: 'https://testing-framework.example.com',
-      githubUrl: 'https://github.com/jojolola/automated-testing-framework',
-      features: ['Parallel Execution', 'Detailed Reports', 'CI/CD Integration', 'Cross-browser Testing']
+      category: 'blockchain',
+      tags: ['Solidity', 'Hardhat', 'OpenZeppelin', 'Web3.js', 'React', 'TypeScript'],
+      demoUrl: 'https://credisom.vercel.app',
+      githubUrl: 'https://github.com/Martins-O/credisomnia',
+      features: ['Dynamic Credit Scoring', 'Soulbound Credit NFT', 'Advanced Lending Protocol', 'High-Yield Savings Vault']
     },
     {
       id: 3,
-      title: 'NFT Marketplace Smart Contract',
-      description: 'A secure NFT marketplace with minting, trading, royalties, and auction functionality. Built with Solidity and deployed on multiple networks.',
+      title: 'ERC-20 Diamond Token standard',
+      description: 'A smart contract standard for creating ERC-20 tokens that can be upgraded with additional functionality without breaking compatibility.',
       image: 'https://images.unsplash.com/photo-1640161704729-cbe966a08476?w=600&h=400&fit=crop',
       category: 'blockchain',
-      tags: ['Solidity', 'ERC-721', 'OpenSea', 'IPFS', 'Polygon'],
-      demoUrl: 'https://nft-marketplace.example.com',
-      githubUrl: 'https://github.com/jojolola/nft-marketplace-contracts',
-      features: ['NFT Minting', 'P2P Trading', 'Royalty System', 'Multi-chain Support']
+      tags: ['Foundry', 'ERC-20', 'Etherscan'],
+      // demoUrl: 'https://nft-marketplace.example.com',
+      githubUrl: 'https://github.com/Martins-O/Diamond-ERC20-Token',
+      features: ['ERC-20 Standard', 'Upgradable Contracts', 'Token Metadata', 'Token Transfers', 'Proxy Pattern']
     },
-    {
-      id: 4,
-      title: 'Microservices Backend API',
-      description: 'A scalable microservices architecture with Node.js, featuring API gateway, authentication service, and real-time communication.',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
-      category: 'backend',
-      tags: ['Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'K8s'],
-      demoUrl: 'https://api.microservices.example.com/docs',
-      githubUrl: 'https://github.com/jojolola/microservices-backend',
-      features: ['API Gateway', 'Service Discovery', 'Load Balancing', 'Real-time Messaging']
-    },
-    {
-      id: 5,
-      title: 'Cross-chain Bridge Protocol',
-      description: 'A secure cross-chain bridge enabling asset transfers between Ethereum, Polygon, and BSC networks with automated validation.',
-      image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=400&fit=crop',
-      category: 'blockchain',
-      tags: ['Solidity', 'Rust', 'Chainlink', 'Multi-sig', 'Web3'],
-      demoUrl: 'https://cross-chain-bridge.example.com',
-      githubUrl: 'https://github.com/jojolola/cross-chain-bridge',
-      features: ['Multi-chain Support', 'Automated Validation', 'Security Audited', 'Low Fees']
-    },
-    {
-      id: 6,
-      title: 'API Performance Testing Suite',
-      description: 'A comprehensive performance testing suite for REST APIs with load testing, stress testing, and detailed performance analytics.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      category: 'qa',
-      tags: ['K6', 'Artillery', 'Grafana', 'InfluxDB', 'Node.js'],
-      demoUrl: 'https://performance-testing.example.com',
-      githubUrl: 'https://github.com/jojolola/api-performance-testing',
-      features: ['Load Testing', 'Real-time Monitoring', 'Custom Metrics', 'Automated Reports']
-    },
-    {
-      id: 7,
-      title: 'StarkNet Cairo Smart Contracts',
-      description: 'Advanced Cairo smart contracts for StarkNet including AMM, lending protocol, and zero-knowledge proof implementations.',
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
-      category: 'blockchain',
-      tags: ['Cairo', 'StarkNet', 'Zero-Knowledge', 'AMM', 'DeFi'],
-      demoUrl: 'https://starknet-contracts.example.com',
-      githubUrl: 'https://github.com/jojolola/starknet-cairo-contracts',
-      features: ['ZK Proofs', 'Layer 2 Scaling', 'AMM Protocol', 'Cairo Language']
-    },
-    {
-      id: 8,
-      title: 'Web3 dApp Testing Framework',
-      description: 'A specialized testing framework for Web3 applications with blockchain interaction testing, wallet connection mocking, and smart contract testing.',
-      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
-      category: 'qa',
-      tags: ['Hardhat', 'Ganache', 'Web3.js', 'Mocha', 'Solidity'],
-      demoUrl: 'https://web3-testing.example.com',
-      githubUrl: 'https://github.com/jojolola/web3-dapp-testing',
-      features: ['Smart Contract Testing', 'Wallet Mocking', 'Gas Optimization', 'Fork Testing']
-    },
+    // {
+    //   id: 4,
+    //   title: 'Microservices Backend API',
+    //   description: 'A scalable microservices architecture with Node.js, featuring API gateway, authentication service, and real-time communication.',
+    //   image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
+    //   category: 'backend',
+    //   tags: ['Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'K8s'],
+    //   demoUrl: 'https://api.microservices.example.com/docs',
+    //   githubUrl: 'https://github.com/jojolola/microservices-backend',
+    //   features: ['API Gateway', 'Service Discovery', 'Load Balancing', 'Real-time Messaging']
+    // },
+    // {
+    //   id: 5,
+    //   title: 'Cross-chain Bridge Protocol',
+    //   description: 'A secure cross-chain bridge enabling asset transfers between Ethereum, Polygon, and BSC networks with automated validation.',
+    //   image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=400&fit=crop',
+    //   category: 'blockchain',
+    //   tags: ['Solidity', 'Rust', 'Chainlink', 'Multi-sig', 'Web3'],
+    //   demoUrl: 'https://cross-chain-bridge.example.com',
+    //   githubUrl: 'https://github.com/jojolola/cross-chain-bridge',
+    //   features: ['Multi-chain Support', 'Automated Validation', 'Security Audited', 'Low Fees']
+    // },
+    // {
+    //   id: 6,
+    //   title: 'API Performance Testing Suite',
+    //   description: 'A comprehensive performance testing suite for REST APIs with load testing, stress testing, and detailed performance analytics.',
+    //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    //   category: 'qa',
+    //   tags: ['K6', 'Artillery', 'Grafana', 'InfluxDB', 'Node.js'],
+    //   demoUrl: 'https://performance-testing.example.com',
+    //   githubUrl: 'https://github.com/jojolola/api-performance-testing',
+    //   features: ['Load Testing', 'Real-time Monitoring', 'Custom Metrics', 'Automated Reports']
+    // },
+    // {
+    //   id: 7,
+    //   title: 'StarkNet Cairo Smart Contracts',
+    //   description: 'Advanced Cairo smart contracts for StarkNet including AMM, lending protocol, and zero-knowledge proof implementations.',
+    //   image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
+    //   category: 'blockchain',
+    //   tags: ['Cairo', 'StarkNet', 'Zero-Knowledge', 'AMM', 'DeFi'],
+    //   demoUrl: 'https://starknet-contracts.example.com',
+    //   githubUrl: 'https://github.com/jojolola/starknet-cairo-contracts',
+    //   features: ['ZK Proofs', 'Layer 2 Scaling', 'AMM Protocol', 'Cairo Language']
+    // },
+    // {
+    //   id: 8,
+    //   title: 'Web3 dApp Testing Framework',
+    //   description: 'A specialized testing framework for Web3 applications with blockchain interaction testing, wallet connection mocking, and smart contract testing.',
+    //   image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
+    //   category: 'qa',
+    //   tags: ['Hardhat', 'Ganache', 'Web3.js', 'Mocha', 'Solidity'],
+    //   demoUrl: 'https://web3-testing.example.com',
+    //   githubUrl: 'https://github.com/jojolola/web3-dapp-testing',
+    //   features: ['Smart Contract Testing', 'Wallet Mocking', 'Gas Optimization', 'Fork Testing']
+    // },
   ]
 
   const filters = [
@@ -279,7 +279,7 @@ export default function Projects() {
               Interested in seeing more of my work?
             </p>
             <a
-              href="https://github.com/jojolola"
+              href="https://github.com/martins-o"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
