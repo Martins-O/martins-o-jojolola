@@ -1,107 +1,120 @@
-// Email service integration
-// This file provides a foundation for email services
-// Replace with your preferred email service (SendGrid, Resend, etc.)
+// Email service integration using Nodemailer with Gmail
+import nodemailer from 'nodemailer';
 
 export interface EmailData {
-  name: string
-  email: string
-  service?: string
-  subject: string
-  message: string
-  ip?: string
-  timestamp?: string
+  name: string;
+  email: string;
+  service?: string;
+  subject: string;
+  message: string;
+  ip?: string;
+  timestamp?: string;
 }
 
 export interface EmailResponse {
-  success: boolean
-  messageId?: string
-  error?: string
+  success: boolean;
+  messageId?: string;
+  error?: string;
 }
 
-class EmailService {
-  private apiKey: string | undefined
-  private fromEmail: string
-  private toEmail: string
+// Get email configuration from environment variables
+const getEmailConfig = () => ({
+  user: process.env.GMAIL_USER,
+  pass: process.env.GMAIL_APP_PASSWORD,
+  toEmail: process.env.TO_EMAIL || process.env.GMAIL_USER,
+  fromEmail: process.env.FROM_EMAIL || process.env.GMAIL_USER,
+});
 
-  constructor() {
-    this.apiKey = process.env.EMAIL_API_KEY
-    this.fromEmail = process.env.FROM_EMAIL || 'noreply@martins-jojolola.dev'
-    this.toEmail = process.env.TO_EMAIL || 'jojololamartins686@gmail.com'
+class EmailService {
+  private transporter: nodemailer.Transporter | null = null;
+
+  private getTransporter(): nodemailer.Transporter {
+    if (this.transporter) {
+      return this.transporter;
+    }
+
+    const config = getEmailConfig();
+
+    if (!config.user || !config.pass) {
+      throw new Error(
+        'Gmail credentials not configured. Set GMAIL_USER and GMAIL_APP_PASSWORD environment variables.'
+      );
+    }
+
+    this.transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: config.user,
+        pass: config.pass,
+      },
+    });
+
+    return this.transporter;
   }
 
   async sendContactEmail(data: EmailData): Promise<EmailResponse> {
     try {
-      // Template for the email content
-      const emailHtml = this.generateEmailTemplate(data)
-      const emailText = this.generateEmailText(data)
+      const config = getEmailConfig();
+      const transporter = this.getTransporter();
 
-      // For now, we'll log the email content
-      // In production, integrate with your preferred email service
-      console.log('Email would be sent:', {
-        to: this.toEmail,
-        from: this.fromEmail,
-        subject: `Portfolio Contact: ${data.subject}`,
-        html: emailHtml,
-        text: emailText
-      })
+      const emailHtml = this.generateEmailTemplate(data);
+      const emailText = this.generateEmailText(data);
 
-      // Simulate email sending
-      const messageId = `msg_${Date.now()}_${Math.random().toString(36).substring(7)}`
-      
-      return {
-        success: true,
-        messageId
-      }
-
-      /* 
-      Example with SendGrid:
-      
-      const msg = {
-        to: this.toEmail,
-        from: this.fromEmail,
+      const mailOptions = {
+        from: `"Portfolio Contact" <${config.fromEmail}>`,
+        to: config.toEmail,
         subject: `Portfolio Contact: ${data.subject}`,
         html: emailHtml,
         text: emailText,
-      }
+        replyTo: data.email,
+      };
 
-      const response = await sgMail.send(msg)
+      const info = await transporter.sendMail(mailOptions);
+
       return {
         success: true,
-        messageId: response[0].headers['x-message-id']
-      }
-      */
-
+        messageId: info.messageId,
+      };
     } catch (error) {
-      console.error('Email sending error:', error)
+      console.error('Email sending error:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
-      }
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   }
 
-  async sendConfirmationEmail(email: string, name: string): Promise<EmailResponse> {
+  async sendConfirmationEmail(
+    email: string,
+    name: string
+  ): Promise<EmailResponse> {
     try {
-      const confirmationHtml = this.generateConfirmationTemplate(name)
-      const confirmationText = this.generateConfirmationText(name)
+      const config = getEmailConfig();
+      const transporter = this.getTransporter();
 
-      console.log('Confirmation email would be sent:', {
+      const confirmationHtml = this.generateConfirmationTemplate(name);
+      const confirmationText = this.generateConfirmationText(name);
+
+      const mailOptions = {
+        from: `"Martins O Jojolola" <${config.fromEmail}>`,
         to: email,
-        from: this.fromEmail,
         subject: 'Thank you for contacting Martins O Jojolola',
         html: confirmationHtml,
-        text: confirmationText
-      })
+        text: confirmationText,
+      };
+
+      const info = await transporter.sendMail(mailOptions);
 
       return {
         success: true,
-        messageId: `conf_${Date.now()}`
-      }
+        messageId: info.messageId,
+      };
     } catch (error) {
+      console.error('Confirmation email error:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
-      }
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   }
 
@@ -131,23 +144,27 @@ class EmailService {
             <div class="content">
               <div class="field">
                 <div class="label">Name:</div>
-                <div class="value">${data.name}</div>
+                <div class="value">${this.escapeHtml(data.name)}</div>
               </div>
               <div class="field">
                 <div class="label">Email:</div>
-                <div class="value">${data.email}</div>
+                <div class="value">${this.escapeHtml(data.email)}</div>
               </div>
-              ${data.service ? `<div class="field">
+              ${
+                data.service
+                  ? `<div class="field">
                 <div class="label">Service Interest:</div>
-                <div class="value">${data.service}</div>
-              </div>` : ''}
+                <div class="value">${this.escapeHtml(data.service)}</div>
+              </div>`
+                  : ''
+              }
               <div class="field">
                 <div class="label">Subject:</div>
-                <div class="value">${data.subject}</div>
+                <div class="value">${this.escapeHtml(data.subject)}</div>
               </div>
               <div class="field">
                 <div class="label">Message:</div>
-                <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
+                <div class="value">${this.escapeHtml(data.message).replace(/\n/g, '<br>')}</div>
               </div>
               <div class="metadata">
                 <strong>Submission Details:</strong><br>
@@ -159,7 +176,7 @@ class EmailService {
           </div>
         </body>
       </html>
-    `
+    `;
   }
 
   private generateEmailText(data: EmailData): string {
@@ -179,10 +196,14 @@ Submission Details:
 IP Address: ${data.ip || 'Unknown'}
 Timestamp: ${data.timestamp || new Date().toISOString()}
 Source: Portfolio Contact Form
-    `.trim()
+    `.trim();
   }
 
   private generateConfirmationTemplate(name: string): string {
+    const appUrl =
+      process.env.NEXT_PUBLIC_APP_URL || 'https://martins-jojolola.dev';
+    const contactEmail = process.env.TO_EMAIL || process.env.GMAIL_USER || '';
+
     return `
       <!DOCTYPE html>
       <html>
@@ -192,9 +213,10 @@ Source: Portfolio Contact Form
           <style>
             body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+            .header { background: linear-gradient(135deg, #10b981, #14b8a6); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
             .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
             .footer { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #d1d5db; font-size: 14px; color: #6b7280; }
+            a { color: #10b981; }
           </style>
         </head>
         <body>
@@ -204,53 +226,69 @@ Source: Portfolio Contact Form
               <p>Your message has been received</p>
             </div>
             <div class="content">
-              <p>Hi ${name},</p>
-              
+              <p>Hi ${this.escapeHtml(name)},</p>
+
               <p>Thank you for reaching out through my portfolio website. I've received your message and will get back to you within 24 hours.</p>
-              
+
               <p>In the meantime, feel free to:</p>
               <ul>
-                <li>Check out my <a href="https://martins-jojolola.dev/projects">projects</a></li>
-                <li>Read my <a href="https://martins-jojolola.dev/blog">technical articles</a></li>
-                <li>Connect with me on <a href="https://linkedin.com/in/martins-jojolola">LinkedIn</a></li>
-                <li>View my <a href="https://github.com/martins-jojolola">GitHub</a></li>
+                <li>Check out my <a href="${appUrl}/projects">projects</a></li>
+                <li>Read my <a href="${appUrl}/blog">technical articles</a></li>
+                <li>Connect with me on <a href="https://linkedin.com/in/martins-o-jojolola">LinkedIn</a></li>
+                <li>View my <a href="https://github.com/Martins-O">GitHub</a></li>
               </ul>
 
               <p>Best regards,<br>
               <strong>Martins O Jojolola</strong><br>
               QA Engineer | Backend Developer | Blockchain Developer</p>
-              
+
               <div class="footer">
                 <p>This is an automated response. Please don't reply to this email.</p>
-                <p>For urgent matters, contact: jojololamartins686@gmail.com</p>
+                ${contactEmail ? `<p>For urgent matters, contact: ${contactEmail}</p>` : ''}
               </div>
             </div>
           </div>
         </body>
       </html>
-    `
+    `;
   }
 
   private generateConfirmationText(name: string): string {
+    const appUrl =
+      process.env.NEXT_PUBLIC_APP_URL || 'https://martins-jojolola.dev';
+    const contactEmail = process.env.TO_EMAIL || process.env.GMAIL_USER || '';
+
     return `
 Hi ${name},
 
 Thank you for reaching out through my portfolio website. I've received your message and will get back to you within 24 hours.
 
 In the meantime, feel free to:
-- Check out my projects: https://martins-jojolola.vercel.app/projects
-- Read my technical articles: https://martins-jojolola.dev/blog
-- Connect with me on LinkedIn: https://linkedin.com/in/martins-jojolola
-- View my GitHub: https://github.com/martins-o
+- Check out my projects: ${appUrl}/projects
+- Read my technical articles: ${appUrl}/blog
+- Connect with me on LinkedIn: https://linkedin.com/in/martins-o-jojolola
+- View my GitHub: https://github.com/Martins-O
+
 Best regards,
 Martins O Jojolola
 QA Engineer | Backend Developer | Blockchain Developer
 
 ---
 This is an automated response. Please don't reply to this email.
-For urgent matters, contact: jojololamartins686@gmail.com
-    `.trim()
+${contactEmail ? `For urgent matters, contact: ${contactEmail}` : ''}
+    `.trim();
+  }
+
+  private escapeHtml(text: string): string {
+    const htmlEntities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    };
+    return text.replace(/[&<>"']/g, (char) => htmlEntities[char] || char);
   }
 }
 
-export const emailService = new EmailService()
+export const emailService = new EmailService();

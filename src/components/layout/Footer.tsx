@@ -1,16 +1,24 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowUp, Icon } from 'lucide-react'
-import { i } from 'framer-motion/client'
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  MapPin,
+  Phone,
+  ArrowUp,
+} from 'lucide-react';
+import { contactConfig, getMailtoLink, getTelLink } from '@/lib/config';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'auto' })
-  }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
 
   const quickLinks = [
     { href: '/', label: 'Home' },
@@ -18,7 +26,7 @@ export default function Footer() {
     { href: '/skills', label: 'Skills' },
     { href: '/projects', label: 'Projects' },
     { href: '/contact', label: 'Contact' },
-  ]
+  ];
 
   const services = [
     { label: 'QA Automation' },
@@ -27,52 +35,52 @@ export default function Footer() {
     { label: 'DeFi Protocol Development' },
     { label: 'API Testing' },
     { label: 'Web3 Integration' },
-  ]
+  ];
 
   const technologies = [
     { label: 'Solidity' },
     { label: 'Rust' },
     { label: 'Cairo' },
     { label: 'Node.js' },
-    { label: 'Java'},
+    { label: 'Java' },
     { label: 'Python' },
     { label: 'Cypress' },
     { label: 'Appium' },
     { label: 'Web3.js' },
-  ]
+  ];
 
   const socialLinks = [
     {
       icon: <Github size={20} />,
-      href: 'https://github.com/Martins-O',
+      href: contactConfig.social.github,
       label: 'GitHub',
-      color: 'hover:text-gray-400'
+      color: 'hover:text-gray-400',
     },
     {
       icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/martins-o-jojolola',
+      href: contactConfig.social.linkedin,
       label: 'LinkedIn',
-      color: 'hover:text-blue-400'
+      color: 'hover:text-blue-400',
     },
     {
       icon: <Twitter size={20} />,
-      href: 'https://twitter.com/jojoOfETH',
+      href: contactConfig.social.twitter,
       label: 'Twitter',
-      color: 'hover:text-blue-400'
+      color: 'hover:text-blue-400',
     },
     {
       icon: <Mail size={20} />,
-      href: 'mailto:jojololamartins686@gmail.com',
+      href: getMailtoLink(),
       label: 'Email',
-      color: 'hover:text-red-400'
+      color: 'hover:text-red-400',
     },
     {
-      Icon: <Phone size={20} />,
-      href: 'tel:2348146587069',
-      label: 'WhatsApp',
-      color: 'hover:text-green-400'
-    }
-  ]
+      icon: <Phone size={20} />,
+      href: getTelLink(),
+      label: 'Phone',
+      color: 'hover:text-green-400',
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -83,7 +91,7 @@ export default function Footer() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -95,7 +103,7 @@ export default function Footer() {
         ease: [0.25, 0.1, 0.25, 1] as const,
       },
     },
-  }
+  };
 
   return (
     <footer className="bg-gray-900 text-gray-300">
@@ -105,35 +113,43 @@ export default function Footer() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* About Section */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="mb-4 text-2xl font-bold text-white">
               Martins O Jojolola
             </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Quality Assurance Engineer, Backend Developer, and Blockchain Developer from Lagos, Nigeria. 
-              Specializing in ensuring software excellence while building the future of decentralized applications.
+            <p className="mb-6 leading-relaxed text-gray-400">
+              Quality Assurance Engineer, Backend Developer, and Blockchain
+              Developer from Lagos, Nigeria. Specializing in ensuring software
+              excellence while building the future of decentralized
+              applications.
             </p>
-            
+
             {/* Contact Info */}
-            <div className="space-y-3 mb-6">
+            <div className="mb-6 space-y-3">
               <div className="flex items-center">
                 <MapPin size={18} className="mr-3 text-blue-400" />
-                <span>Lagos, Nigeria</span>
+                <span>{contactConfig.location}</span>
               </div>
               <div className="flex items-center">
                 <Phone size={18} className="mr-3 text-green-400" />
-                <a href="tel:+2348146587069" className="hover:text-white transition-colors">
-                  +234 814 658 7069
+                <a
+                  href={getTelLink()}
+                  className="transition-colors hover:text-white"
+                >
+                  {contactConfig.phone}
                 </a>
               </div>
               <div className="flex items-center">
                 <Mail size={18} className="mr-3 text-red-400" />
-                <a href="mailto:jojololamartins686@gmail.com" className="hover:text-white transition-colors">
-                  jojololamartins686@gmail.com
+                <a
+                  href={getMailtoLink()}
+                  className="transition-colors hover:text-white"
+                >
+                  {contactConfig.email}
                 </a>
               </div>
             </div>
@@ -146,7 +162,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 bg-gray-800 rounded-lg transition-all duration-300 hover:bg-gray-700 ${social.color}`}
+                  className={`rounded-lg bg-gray-800 p-2 transition-all duration-300 hover:bg-gray-700 ${social.color}`}
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -157,13 +173,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-white transition-colors duration-200 block py-1"
+                    className="block py-1 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -174,7 +192,7 @@ export default function Footer() {
 
           {/* Services */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">Services</h3>
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index} className="py-1 text-sm">
@@ -186,13 +204,18 @@ export default function Footer() {
         </div>
 
         {/* Technologies Section */}
-        <motion.div variants={itemVariants} className="mt-12 pt-8 border-t border-gray-800">
-          <h3 className="text-lg font-semibold text-white mb-4 text-center">Technologies I Work With</h3>
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 border-t border-gray-800 pt-8"
+        >
+          <h3 className="mb-4 text-center text-lg font-semibold text-white">
+            Technologies I Work With
+          </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {technologies.map((tech, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-colors duration-200"
+                className="rounded-full bg-gray-800 px-3 py-1 text-sm transition-colors duration-200 hover:bg-gray-700"
               >
                 {tech.label}
               </span>
@@ -203,18 +226,18 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between sm:flex-row">
             <p className="text-sm text-gray-400">
               © {currentYear} Martins O Jojolola. All rights reserved.
             </p>
-            
+
             {/* Back to Top */}
             <motion.button
               onClick={scrollToTop}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-4 sm:mt-0 flex items-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors duration-200"
+              className="mt-4 flex items-center space-x-2 text-sm text-gray-400 transition-colors duration-200 hover:text-white sm:mt-0"
             >
               <span>Back to top</span>
               <ArrowUp size={16} />
@@ -223,5 +246,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { motion } from 'framer-motion';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { contactConfig, getMailtoLink } from '@/lib/config';
 
 export default function Hero() {
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,7 +16,7 @@ export default function Hero() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -28,37 +28,37 @@ export default function Hero() {
         ease: [0.25, 0.1, 0.25, 1] as const,
       },
     },
-  }
+  };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-teal-50 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-900"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-teal-50 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-900"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-200 dark:bg-emerald-800 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-70 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-teal-200 dark:bg-teal-800 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
+        <div className="absolute -top-40 -right-40 h-80 w-80 animate-pulse rounded-full bg-emerald-200 opacity-70 mix-blend-multiply blur-xl filter dark:bg-emerald-800 dark:mix-blend-overlay"></div>
+        <div className="animation-delay-2000 absolute -bottom-40 -left-40 h-80 w-80 animate-pulse rounded-full bg-teal-200 opacity-70 mix-blend-multiply blur-xl filter dark:bg-teal-800 dark:mix-blend-overlay"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20"
+          className="grid min-h-screen grid-cols-1 items-center gap-12 py-20 lg:grid-cols-2"
         >
           {/* Content */}
           <div className="text-center lg:text-left">
             <motion.div variants={itemVariants} className="mb-4">
-              <span className="inline-block px-4 py-2 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 rounded-full text-sm font-medium">
-                👋 Welcome to my portfolio
+              <span className="inline-block rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                Welcome to my portfolio
               </span>
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+              className="mb-6 text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl dark:text-white"
             >
               Hi, I&apos;m{' '}
               <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
@@ -68,34 +68,35 @@ export default function Hero() {
 
             <motion.h2
               variants={itemVariants}
-              className="text-xl sm:text-2xl lg:text-3xl font-medium text-gray-600 dark:text-gray-300 mb-6"
+              className="mb-6 text-xl font-medium text-gray-600 sm:text-2xl lg:text-3xl dark:text-gray-300"
             >
               QA Engineer | Backend Developer | Blockchain Developer
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl"
+              className="mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400"
             >
-              I ensure software quality through comprehensive testing, build robust backend systems,
-              and develop cutting-edge blockchain solutions using Solidity, Rust, and Cairo.
-              Bridging Web2 and Web3 technologies to create secure, scalable applications.
+              I ensure software quality through comprehensive testing, build
+              robust backend systems, and develop cutting-edge blockchain
+              solutions using Solidity, Rust, and Cairo. Bridging Web2 and Web3
+              technologies to create secure, scalable applications.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mb-12"
+              className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
             >
               <Link
                 href="/projects"
-                className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors duration-200 flex items-center gap-2"
+                className="flex items-center gap-2 rounded-lg bg-emerald-600 px-8 py-4 font-medium text-white transition-colors duration-200 hover:bg-emerald-700"
               >
                 View My Work
                 <ArrowDown size={18} />
               </Link>
               <Link
                 href="/contact"
-                className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400 font-medium rounded-lg transition-colors duration-200"
+                className="rounded-lg border-2 border-gray-300 px-8 py-4 font-medium text-gray-700 transition-colors duration-200 hover:border-emerald-600 hover:text-emerald-600 dark:border-gray-600 dark:text-gray-300 dark:hover:border-emerald-400 dark:hover:text-emerald-400"
               >
                 Get In Touch
               </Link>
@@ -103,27 +104,27 @@ export default function Hero() {
 
             <motion.div
               variants={itemVariants}
-              className="flex gap-6 items-center justify-center lg:justify-start"
+              className="flex items-center justify-center gap-6 lg:justify-start"
             >
               <a
-                href="https://github.com/Martins-O"
+                href={contactConfig.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
+                className="p-3 text-gray-600 transition-colors duration-200 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
               >
                 <Github size={24} />
               </a>
               <a
-                href="https://linkedin.com/in/martins-o-jojolola"
+                href={contactConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
+                className="p-3 text-gray-600 transition-colors duration-200 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
               >
                 <Linkedin size={24} />
               </a>
               <a
-                href="mailto:jojololamartins686@gmail.com"
-                className="p-3 text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
+                href={getMailtoLink()}
+                className="p-3 text-gray-600 transition-colors duration-200 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400"
               >
                 <Mail size={24} />
               </a>
@@ -136,11 +137,11 @@ export default function Hero() {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-2xl blur-2xl opacity-20"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-400 to-teal-500 opacity-20 blur-2xl"></div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] rounded-2xl overflow-hidden border-4 border-white dark:border-gray-700 shadow-2xl"
+                className="relative h-72 w-72 overflow-hidden rounded-2xl border-4 border-white shadow-2xl sm:h-80 sm:w-80 lg:h-96 lg:w-96 xl:h-[420px] xl:w-[420px] dark:border-gray-700"
               >
                 <Image
                   src="/images/PXL_20250705_123229668.RAW-01.COVER.jpg"
@@ -153,8 +154,7 @@ export default function Hero() {
             </div>
           </motion.div>
         </motion.div>
-
       </div>
     </section>
-  )
+  );
 }
