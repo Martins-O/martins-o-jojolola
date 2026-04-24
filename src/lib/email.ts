@@ -233,14 +233,13 @@ Source: Portfolio Contact Form
               <p>In the meantime, feel free to:</p>
               <ul>
                 <li>Check out my <a href="${appUrl}/projects">projects</a></li>
-                <li>Read my <a href="${appUrl}/blog">technical articles</a></li>
                 <li>Connect with me on <a href="https://linkedin.com/in/martins-o-jojolola">LinkedIn</a></li>
                 <li>View my <a href="https://github.com/Martins-O">GitHub</a></li>
               </ul>
 
               <p>Best regards,<br>
               <strong>Martins O Jojolola</strong><br>
-              QA Engineer | Backend Developer | Blockchain Developer</p>
+              Smart Contract Engineer | Full-Stack Developer | Web3 Builder</p>
 
               <div class="footer">
                 <p>This is an automated response. Please don't reply to this email.</p>
@@ -265,13 +264,12 @@ Thank you for reaching out through my portfolio website. I've received your mess
 
 In the meantime, feel free to:
 - Check out my projects: ${appUrl}/projects
-- Read my technical articles: ${appUrl}/blog
 - Connect with me on LinkedIn: https://linkedin.com/in/martins-o-jojolola
 - View my GitHub: https://github.com/Martins-O
 
 Best regards,
 Martins O Jojolola
-QA Engineer | Backend Developer | Blockchain Developer
+Smart Contract Engineer | Full-Stack Developer | Web3 Builder
 
 ---
 This is an automated response. Please don't reply to this email.

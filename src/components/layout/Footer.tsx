@@ -2,16 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  MapPin,
-  Phone,
-  ArrowUp,
-} from 'lucide-react';
-import { contactConfig, getMailtoLink, getTelLink } from '@/lib/config';
+import { Github, Linkedin, Twitter, Mail, MapPin, ArrowUp } from 'lucide-react';
+import { contactConfig, getMailtoLink } from '@/lib/config';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,24 +21,24 @@ export default function Footer() {
   ];
 
   const services = [
-    { label: 'QA Automation' },
-    { label: 'Backend Development' },
     { label: 'Smart Contract Development' },
-    { label: 'DeFi Protocol Development' },
-    { label: 'API Testing' },
-    { label: 'Web3 Integration' },
+    { label: 'DeFi Protocol Design' },
+    { label: 'Full-Stack Web3 dApps' },
+    { label: 'Cross-Chain Infrastructure' },
+    { label: 'Backend API Development' },
+    { label: 'Developer SDKs/Tooling' },
   ];
 
   const technologies = [
     { label: 'Solidity' },
     { label: 'Rust' },
     { label: 'Cairo' },
+    { label: 'Next.js' },
+    { label: 'TypeScript' },
     { label: 'Node.js' },
-    { label: 'Java' },
-    { label: 'Python' },
-    { label: 'Cypress' },
-    { label: 'Appium' },
-    { label: 'Web3.js' },
+    { label: 'PostgreSQL' },
+    { label: 'Docker' },
+    { label: 'Hardhat' },
   ];
 
   const socialLinks = [
@@ -73,12 +65,6 @@ export default function Footer() {
       href: getMailtoLink(),
       label: 'Email',
       color: 'hover:text-red-400',
-    },
-    {
-      icon: <Phone size={20} />,
-      href: getTelLink(),
-      label: 'Phone',
-      color: 'hover:text-green-400',
     },
   ];
 
@@ -122,10 +108,9 @@ export default function Footer() {
               Martins O Jojolola
             </h3>
             <p className="mb-6 leading-relaxed text-gray-400">
-              Quality Assurance Engineer, Backend Developer, and Blockchain
-              Developer from Lagos, Nigeria. Specializing in ensuring software
-              excellence while building the future of decentralized
-              applications.
+              Smart Contract Engineer, Full-Stack Developer, and Web3 Builder.
+              Specializing in designing robust architectures and building the
+              infrastructure of decentralized applications.
             </p>
 
             {/* Contact Info */}
@@ -133,15 +118,6 @@ export default function Footer() {
               <div className="flex items-center">
                 <MapPin size={18} className="mr-3 text-blue-400" />
                 <span>{contactConfig.location}</span>
-              </div>
-              <div className="flex items-center">
-                <Phone size={18} className="mr-3 text-green-400" />
-                <a
-                  href={getTelLink()}
-                  className="transition-colors hover:text-white"
-                >
-                  {contactConfig.phone}
-                </a>
               </div>
               <div className="flex items-center">
                 <Mail size={18} className="mr-3 text-red-400" />

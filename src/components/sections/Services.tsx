@@ -1,138 +1,146 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { 
-  CheckCircle, 
-  Clock, 
-  Users, 
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import {
+  CheckCircle,
+  Clock,
+  Users,
   TrendingUp,
   Shield,
   Code,
   TestTube,
   Database,
   Coins,
-  ArrowRight
-} from 'lucide-react'
+  ArrowRight,
+} from 'lucide-react';
 
 const services = [
   {
-    id: 'qa-consultation',
-    category: 'Quality Assurance',
-    title: 'QA Strategy & Test Automation',
-    description: 'Comprehensive QA consultation, test strategy development, and automated testing framework implementation.',
-    icon: TestTube,
-    features: [
-      'Test automation strategy & roadmap',
-      'Cypress/Playwright framework setup',
-      'CI/CD integration & reporting',
-      'Team training & knowledge transfer',
-      'Quality metrics & KPI definition'
-    ],
-    timeline: '2-8 weeks',
-    deliverables: [
-      'Test automation framework',
-      'Comprehensive test suites',
-      'CI/CD pipeline integration',
-      'Team training materials',
-      'Quality assurance documentation'
-    ]
-  },
-  {
-    id: 'backend-development',
-    category: 'Backend Development',
-    title: 'Backend API & Microservices',
-    description: 'Scalable backend development with Node.js/Python, API design, and microservices architecture.',
-    icon: Database,
-    features: [
-      'RESTful API design & development',
-      'Microservices architecture',
-      'Database design & optimization',
-      'Authentication & authorization',
-      'Performance optimization & monitoring'
-    ],
-    timeline: '4-12 weeks',
-    deliverables: [
-      'Production-ready APIs',
-      'Database schema & migrations',
-      'Documentation & API specs',
-      'Deployment configuration',
-      'Monitoring & logging setup'
-    ]
-  },
-  {
-    id: 'blockchain-development',
-    category: 'Blockchain Development',
+    id: 'smart-contracts',
+    category: 'Smart Contracts',
     title: 'Smart Contracts & DeFi Solutions',
-    description: 'End-to-end blockchain development including smart contracts, DeFi protocols, and Web3 integrations.',
+    description:
+      'Secure smart contract development, DeFi protocol design, and comprehensive security optimizations.',
     icon: Coins,
     features: [
       'Smart contract development (Solidity/Rust)',
       'DeFi protocol design & implementation',
-      'Security audits & gas optimization',
-      'Cross-chain integration solutions',
-      'Web3 frontend integration'
+      'Security optimizations & pre-audit reviews',
+      'Cross-chain messaging integration',
+      'Tokenomics implementation',
+    ],
+    timeline: '4-12 weeks',
+    deliverables: [
+      'Audited-ready smart contracts',
+      'Deployment scripts & documentation',
+      'Security review reports',
+      'Test coverage & simulation',
+      'Mainnet deployment support',
+    ],
+  },
+  {
+    id: 'full-stack-development',
+    category: 'Full-Stack Development',
+    title: 'Full-Stack Web3 Applications',
+    description:
+      'End-to-end dApp development with Next.js, Node.js, and robust Web3 integrations.',
+    icon: Code,
+    features: [
+      'Responsive Next.js frontends',
+      'Scalable Node.js/TypeScript backends',
+      'Web3 wallet integrations',
+      'Database design (SQL/NoSQL)',
+      'Authentication & security',
+    ],
+    timeline: '6-14 weeks',
+    deliverables: [
+      'Production-ready dApp',
+      'Backend APIs & microservices',
+      'Database schema & migrations',
+      'Deployment configurations',
+      'Source code & documentation',
+    ],
+  },
+  {
+    id: 'web3-infrastructure',
+    category: 'Web3 Infrastructure',
+    title: 'Infrastructure & Developer Tooling',
+    description:
+      'Building custom blockchain infrastructure, SDKs, and developer-facing tools.',
+    icon: Database,
+    features: [
+      'Custom SDK development',
+      'Cross-chain bridges & protocols',
+      'Indexer & subgraph development',
+      'CI/CD for Web3 projects',
+      'Developer documentation',
     ],
     timeline: '6-16 weeks',
     deliverables: [
-      'Audited smart contracts',
-      'Deployment scripts & documentation',
-      'Security audit reports',
-      'Web3 integration guide',
-      'Mainnet deployment support'
-    ]
-  }
-]
+      'NPM packages / libraries',
+      'Infrastructure automation',
+      'Integration guides',
+      'API/SDK documentation',
+      'Performance metrics',
+    ],
+  },
+];
 
 const processSteps = [
   {
     step: '01',
     title: 'Discovery Call',
-    description: 'Free 30-minute consultation to understand your requirements and challenges.',
-    icon: Users
+    description:
+      'Free 30-minute consultation to understand your requirements and challenges.',
+    icon: Users,
   },
   {
     step: '02',
     title: 'Proposal & Planning',
-    description: 'Detailed project proposal with timeline, milestones, and deliverables.',
-    icon: Code
+    description:
+      'Detailed project proposal with timeline, milestones, and deliverables.',
+    icon: Code,
   },
   {
     step: '03',
     title: 'Development & Testing',
-    description: 'Agile development with regular updates and comprehensive testing.',
-    icon: TrendingUp
+    description:
+      'Agile development with regular updates and comprehensive testing.',
+    icon: TrendingUp,
   },
   {
     step: '04',
     title: 'Delivery & Support',
-    description: 'Final delivery with documentation and ongoing support options.',
-    icon: Shield
-  }
-]
+    description:
+      'Final delivery with documentation and ongoing support options.',
+    icon: Shield,
+  },
+];
 
 export default function Services() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-20 dark:bg-gray-800/50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
             Professional Services
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Expert consulting and development services for quality assurance, backend development, 
-            and blockchain solutions. Let&apos;s build something amazing together.
+          <p className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300">
+            Expert development services for smart contracts, full-stack Web3
+            applications, and blockchain infrastructure. Let&apos;s build
+            something amazing together.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid lg:grid-cols-1 gap-8 mb-20">
+        <div className="mb-20 grid gap-8 lg:grid-cols-1">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -140,21 +148,21 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+              className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-900"
             >
               <div className="p-8">
-                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
                   {/* Service Info */}
                   <div className="flex-1">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                        <service.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <div className="mb-6 flex items-start gap-4">
+                      <div className="rounded-xl bg-blue-50 p-3 dark:bg-blue-900/20">
+                        <service.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">
+                        <div className="mb-2 text-sm font-medium text-blue-600 dark:text-blue-400">
                           {service.category}
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                        <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
                           {service.title}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-300">
@@ -165,14 +173,16 @@ export default function Services() {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                      <h4 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                         What&apos;s Included:
                       </h4>
-                      <ul className="grid sm:grid-cols-2 gap-2">
+                      <ul className="grid gap-2 sm:grid-cols-2">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-3">
-                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                            <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                            <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-500" />
+                            <span className="text-gray-600 dark:text-gray-300">
+                              {feature}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -180,14 +190,14 @@ export default function Services() {
 
                     {/* Deliverables */}
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
                         Key Deliverables:
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {service.deliverables.map((deliverable, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-lg"
+                            className="rounded-lg bg-gray-100 px-3 py-1 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300"
                           >
                             {deliverable}
                           </span>
@@ -198,25 +208,25 @@ export default function Services() {
 
                   {/* Timeline & CTA */}
                   <div className="lg:w-80">
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+                    <div className="rounded-xl bg-gray-50 p-6 dark:bg-gray-800">
                       <div className="mb-6">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Clock className="w-4 h-4 text-gray-500" />
+                        <div className="mb-2 flex items-center gap-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
                           <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                             Timeline
                           </span>
                         </div>
-                        <span className="text-gray-900 dark:text-white font-semibold">
+                        <span className="font-semibold text-gray-900 dark:text-white">
                           {service.timeline}
                         </span>
                       </div>
 
                       <Link
                         href={`/contact?service=${service.id}`}
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2 group"
+                        className="group flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-blue-700"
                       >
                         Get Started
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </div>
                   </div>
@@ -233,22 +243,22 @@ export default function Services() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
+          <h3 className="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
             How We Work Together
           </h3>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <step.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/20">
+                    <step.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
                     {step.step}
                   </div>
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h4 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                   {step.title}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300">
@@ -264,26 +274,27 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white"
+          className="rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center text-white"
         >
-          <h3 className="text-2xl font-bold mb-4">
+          <h3 className="mb-4 text-2xl font-bold">
             Ready to Start Your Project?
           </h3>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Book a free 30-minute consultation to discuss your project requirements and how I can help 
-            you achieve your goals with quality assurance, backend development, or blockchain solutions.
+          <p className="mx-auto mb-6 max-w-2xl text-blue-100">
+            Book a free 30-minute consultation to discuss your project
+            requirements and how I can help you achieve your goals with secure
+            smart contracts, full-stack development, or Web3 infrastructure.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center gap-2 group"
+              className="group flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-3 font-semibold text-blue-600 transition-colors duration-200 hover:bg-blue-50"
             >
               Book Free Consultation
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/case-studies"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-200"
+              className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-blue-600"
             >
               View Case Studies
             </Link>
@@ -291,5 +302,5 @@ export default function Services() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

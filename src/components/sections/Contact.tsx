@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
   Mail,
-  Phone,
   MapPin,
   Github,
   Linkedin,
@@ -17,7 +16,7 @@ import {
   CheckCircle,
   AlertCircle,
 } from 'lucide-react';
-import { contactConfig, getMailtoLink, getTelLink } from '@/lib/config';
+import { contactConfig, getMailtoLink } from '@/lib/config';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -75,12 +74,6 @@ export default function Contact() {
       label: 'Email',
       value: contactConfig.email,
       href: getMailtoLink(),
-    },
-    {
-      icon: <Phone size={24} />,
-      label: 'Phone',
-      value: contactConfig.phone,
-      href: getTelLink(),
     },
     {
       icon: <MapPin size={24} />,
@@ -333,14 +326,14 @@ export default function Contact() {
                       className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-colors focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     >
                       <option value="">Select a service...</option>
-                      <option value="qa-consultation">
-                        QA Strategy & Test Automation
-                      </option>
-                      <option value="backend-development">
-                        Backend API & Microservices
-                      </option>
-                      <option value="blockchain-development">
+                      <option value="smart-contracts">
                         Smart Contracts & DeFi Solutions
+                      </option>
+                      <option value="full-stack-development">
+                        Full-Stack Web3 Applications
+                      </option>
+                      <option value="web3-infrastructure">
+                        Infrastructure & Developer Tooling
                       </option>
                       <option value="general-consultation">
                         General Consultation

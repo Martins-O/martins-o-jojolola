@@ -4,7 +4,7 @@
 export const contactConfig = {
   email:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@martins-jojolola.dev',
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+234 814 658 7069',
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+234 812 345 6789',
   location: 'Lagos, Nigeria',
   social: {
     github: 'https://github.com/Martins-O',
@@ -16,6 +16,3 @@ export const contactConfig = {
 
 // Helper to get mailto link
 export const getMailtoLink = () => `mailto:${contactConfig.email}`;
-
-// Helper to get tel link
-export const getTelLink = () => `tel:${contactConfig.phone.replace(/\s/g, '')}`;

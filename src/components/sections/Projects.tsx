@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { ExternalLink, Github } from 'lucide-react'
-import Image from 'next/image'
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { ExternalLink, Github } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Projects() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [activeFilter, setActiveFilter] = useState('all')
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,7 +20,7 @@ export default function Projects() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -32,143 +32,182 @@ export default function Projects() {
         ease: [0.25, 0.1, 0.25, 1] as const,
       },
     },
-  }
+  };
 
   const projects = [
     {
       id: 1,
-      title: 'DeFi Yield Farming Protocol',
-      description: 'A decentralized yield farming protocol built on Ethereum with smart contracts for liquidity mining, staking rewards, and governance token distribution.',
-      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop',
-      category: 'blockchain',
-      tags: ['Solidity', 'Foundry', 'OpenZeppelin', 'Web3.js', 'React'],
-      demoUrl: 'https://defi-protocol.example.com',
-      githubUrl: 'https://github.com/Martins-O/defi-yield-farming-protocol',
-      features: ['Smart Contracts', 'Liquidity Mining', 'Governance']
+      title: 'ArbiLink',
+      description:
+        'Cross-chain messaging protocol on Arbitrum Stylus. Arbitrum Open House NYC Buildathon.',
+      image:
+        'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop',
+      categories: ['infrastructure', 'hackathon'],
+      tags: ['Rust', 'Stylus', 'TypeScript'],
+      demoUrl: '',
+      githubUrl: 'https://github.com/Martins-O/arbilink',
+      features: ['Cross-chain messaging', 'Arbitrum Stylus', 'Smart Contracts'],
     },
     {
       id: 2,
-      title: 'Credisom lending protocol',
-      description: "Credisomnia is a revolutionary DeFi platform that bridges traditional credit scoring with cutting-edge blockchain technology. Built on Somnia's high-performance blockchain, it offers real-time credit scoring, dynamic lending rates, and soulbound NFT-based credit identity that evolves with your DeFi activities.",
-      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=400&fit=crop',
-      category: 'blockchain',
-      tags: ['Solidity', 'Hardhat', 'OpenZeppelin', 'Web3.js', 'React', 'TypeScript'],
-      demoUrl: 'https://credisom.vercel.app',
-      githubUrl: 'https://github.com/Martins-O/credisomnia',
-      features: ['Dynamic Credit Scoring', 'Soulbound Credit NFT', 'Advanced Lending Protocol', 'High-Yield Savings Vault']
+      title: 'TrustVault',
+      description:
+        'Decentralized document notarization. Integrates Flow EVM, Filecoin/Storacha, Lit Protocol, NEAR. Built during PL Genesis hackathon.',
+      image:
+        'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=400&fit=crop',
+      categories: ['smart-contracts', 'hackathon'],
+      tags: ['Solidity', 'TypeScript'],
+      demoUrl: '',
+      githubUrl: '',
+      features: [
+        'Document Notarization',
+        'Decentralized Storage',
+        'Multi-chain',
+      ],
     },
     {
       id: 3,
-      title: 'ERC-20 Diamond Token standard',
-      description: 'A smart contract standard for creating ERC-20 tokens that can be upgraded with additional functionality without breaking compatibility.',
-      image: 'https://images.unsplash.com/photo-1640161704729-cbe966a08476?w=600&h=400&fit=crop',
-      category: 'blockchain',
-      tags: ['Foundry', 'ERC-20', 'Etherscan'],
-      // demoUrl: 'https://nft-marketplace.example.com',
-      githubUrl: 'https://github.com/Martins-O/Diamond-ERC20-Token',
-      features: ['ERC-20 Standard', 'Upgradable Contracts', 'Token Metadata', 'Token Transfers', 'Proxy Pattern']
+      title: 'Liquifi',
+      description:
+        'AI-powered invoice factoring DeFi protocol on Mantle L2, ported to Flow EVM.',
+      image:
+        'https://images.unsplash.com/photo-1640161704729-cbe966a08476?w=600&h=400&fit=crop',
+      categories: ['defi', 'smart-contracts'],
+      tags: ['Solidity', 'Node.js'],
+      demoUrl: '',
+      githubUrl: '',
+      features: ['AI Factoring', 'DeFi Protocol', 'Mantle L2'],
     },
-    // {
-    //   id: 4,
-    //   title: 'Microservices Backend API',
-    //   description: 'A scalable microservices architecture with Node.js, featuring API gateway, authentication service, and real-time communication.',
-    //   image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
-    //   category: 'backend',
-    //   tags: ['Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'K8s'],
-    //   demoUrl: 'https://api.microservices.example.com/docs',
-    //   githubUrl: 'https://github.com/jojolola/microservices-backend',
-    //   features: ['API Gateway', 'Service Discovery', 'Load Balancing', 'Real-time Messaging']
-    // },
-    // {
-    //   id: 5,
-    //   title: 'Cross-chain Bridge Protocol',
-    //   description: 'A secure cross-chain bridge enabling asset transfers between Ethereum, Polygon, and BSC networks with automated validation.',
-    //   image: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=400&fit=crop',
-    //   category: 'blockchain',
-    //   tags: ['Solidity', 'Rust', 'Chainlink', 'Multi-sig', 'Web3'],
-    //   demoUrl: 'https://cross-chain-bridge.example.com',
-    //   githubUrl: 'https://github.com/jojolola/cross-chain-bridge',
-    //   features: ['Multi-chain Support', 'Automated Validation', 'Security Audited', 'Low Fees']
-    // },
-    // {
-    //   id: 6,
-    //   title: 'API Performance Testing Suite',
-    //   description: 'A comprehensive performance testing suite for REST APIs with load testing, stress testing, and detailed performance analytics.',
-    //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-    //   category: 'qa',
-    //   tags: ['K6', 'Artillery', 'Grafana', 'InfluxDB', 'Node.js'],
-    //   demoUrl: 'https://performance-testing.example.com',
-    //   githubUrl: 'https://github.com/jojolola/api-performance-testing',
-    //   features: ['Load Testing', 'Real-time Monitoring', 'Custom Metrics', 'Automated Reports']
-    // },
-    // {
-    //   id: 7,
-    //   title: 'StarkNet Cairo Smart Contracts',
-    //   description: 'Advanced Cairo smart contracts for StarkNet including AMM, lending protocol, and zero-knowledge proof implementations.',
-    //   image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
-    //   category: 'blockchain',
-    //   tags: ['Cairo', 'StarkNet', 'Zero-Knowledge', 'AMM', 'DeFi'],
-    //   demoUrl: 'https://starknet-contracts.example.com',
-    //   githubUrl: 'https://github.com/jojolola/starknet-cairo-contracts',
-    //   features: ['ZK Proofs', 'Layer 2 Scaling', 'AMM Protocol', 'Cairo Language']
-    // },
-    // {
-    //   id: 8,
-    //   title: 'Web3 dApp Testing Framework',
-    //   description: 'A specialized testing framework for Web3 applications with blockchain interaction testing, wallet connection mocking, and smart contract testing.',
-    //   image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
-    //   category: 'qa',
-    //   tags: ['Hardhat', 'Ganache', 'Web3.js', 'Mocha', 'Solidity'],
-    //   demoUrl: 'https://web3-testing.example.com',
-    //   githubUrl: 'https://github.com/jojolola/web3-dapp-testing',
-    //   features: ['Smart Contract Testing', 'Wallet Mocking', 'Gas Optimization', 'Fork Testing']
-    // },
-  ]
+    {
+      id: 4,
+      title: 'Factory EMS',
+      description: 'Full-stack Employee Management System.',
+      image:
+        'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
+      categories: ['full-stack'],
+      tags: [
+        'Next.js 14',
+        'TypeScript',
+        'Prisma',
+        'PostgreSQL',
+        'tRPC',
+        'NextAuth',
+      ],
+      demoUrl: '',
+      githubUrl: 'https://github.com/Martins-O/factory-ems',
+      features: [
+        'Employee Management',
+        'Dashboard Analytics',
+        'Role-based Access',
+      ],
+    },
+    {
+      id: 5,
+      title: 'ChainGuard AI',
+      description: 'Real-time AI security monitoring for Avalanche subnets.',
+      image:
+        'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=400&fit=crop',
+      categories: ['infrastructure', 'smart-contracts'],
+      tags: ['Solidity', 'TypeScript'],
+      demoUrl: '',
+      githubUrl: '',
+      features: ['AI Monitoring', 'Avalanche Subnets', 'Real-time Security'],
+    },
+    {
+      id: 6,
+      title: 'AgentPay Hub',
+      description: 'Solana payment orchestration via MCP/x402 protocol.',
+      image:
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      categories: ['defi', 'infrastructure'],
+      tags: ['Rust', 'TypeScript'],
+      demoUrl: '',
+      githubUrl: '',
+      features: [
+        'Payment Orchestration',
+        'MCP/x402 protocol',
+        'Solana Network',
+      ],
+    },
+    {
+      id: 7,
+      title: 'MobileKit',
+      description:
+        'Open-source mobile Web3 SDK for React Native and Flutter via deep linking. (in-progress)',
+      image:
+        'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
+      categories: ['infrastructure', 'full-stack'],
+      tags: ['TypeScript'],
+      demoUrl: '',
+      githubUrl: '',
+      features: ['Web3 SDK', 'React Native / Flutter', 'Deep linking'],
+    },
+    {
+      id: 8,
+      title: 'SkillChain / Veriforge',
+      description:
+        'Verifiable skill credentials with blockchain attestation on Base. (in-progress)',
+      image:
+        'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
+      categories: ['smart-contracts', 'full-stack'],
+      tags: ['Solidity', 'TypeScript'],
+      demoUrl: '',
+      githubUrl: '',
+      features: ['Skill Verification', 'Blockchain Attestation'],
+    },
+  ];
 
   const filters = [
-    { key: 'all', label: 'All Projects' },
-    { key: 'blockchain', label: 'Blockchain' },
-    { key: 'qa', label: 'Quality Assurance' },
-    { key: 'backend', label: 'Backend' },
-  ]
+    { key: 'all', label: 'All' },
+    { key: 'smart-contracts', label: 'Smart Contracts' },
+    { key: 'full-stack', label: 'Full-Stack' },
+    { key: 'defi', label: 'DeFi' },
+    { key: 'infrastructure', label: 'Infrastructure' },
+    { key: 'hackathon', label: 'Hackathon' },
+  ];
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter)
+  const filteredProjects =
+    activeFilter === 'all'
+      ? projects
+      : projects.filter((project) => project.categories.includes(activeFilter));
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="py-20 bg-white dark:bg-gray-900"
+      className="bg-white py-20 dark:bg-gray-900"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div variants={itemVariants} className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
               Featured Projects
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              A showcase of my recent work, demonstrating expertise in various technologies and problem-solving approaches.
+            <div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-blue-600 to-purple-600"></div>
+            <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
+              A showcase of my recent work, demonstrating expertise in various
+              technologies and problem-solving approaches.
             </p>
           </motion.div>
 
           {/* Filter Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
+          <motion.div
+            variants={itemVariants}
+            className="mb-12 flex flex-wrap justify-center gap-4"
+          >
             {filters.map((filter) => (
               <button
                 key={filter.key}
                 onClick={() => setActiveFilter(filter.key)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`rounded-full px-6 py-2 font-medium transition-all duration-300 ${
                   activeFilter === filter.key
                     ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-700'
+                    : 'bg-gray-100 text-gray-700 hover:bg-blue-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
                 }`}
               >
                 {filter.label}
@@ -177,72 +216,79 @@ export default function Projects() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl dark:bg-gray-800"
               >
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 shrink-0 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div className="flex gap-4">
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                      >
-                        <ExternalLink size={20} />
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                      >
-                        <Github size={20} />
-                      </a>
+                      {project.demoUrl &&
+                        !project.demoUrl.includes('example.com') && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+                          >
+                            <ExternalLink size={20} />
+                          </a>
+                        )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
+                        >
+                          <Github size={20} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <div className="flex flex-grow flex-col p-6">
+                  <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                  <p className="mb-4 line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
                     {project.description}
                   </p>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Key Features:</h4>
-                    <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                    <h4 className="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
+                      Key Features:
+                    </h4>
+                    <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
                       {project.features.map((feature, index) => (
                         <li key={index} className="flex items-center">
-                          <span className="w-1 h-1 bg-blue-600 rounded-full mr-2"></span>
-                          {feature}
+                          <span className="mr-2 h-1 w-1 shrink-0 rounded-full bg-blue-600"></span>
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="mb-4 flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs font-medium rounded"
+                        className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-blue-300"
                       >
                         {tag}
                       </span>
@@ -250,23 +296,32 @@ export default function Projects() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-3">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors text-center"
-                    >
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 text-sm font-medium py-2 px-4 rounded-lg transition-colors text-center"
-                    >
-                      Source Code
-                    </a>
+                  <div className="mt-auto flex gap-3 border-t border-gray-100 pt-4 dark:border-gray-700">
+                    {project.demoUrl &&
+                    !project.demoUrl.includes('example.com') ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex flex-1 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                      >
+                        Live Demo
+                      </a>
+                    ) : (
+                      <div className="inline-flex flex-1 cursor-default items-center justify-center rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                        Coming Soon
+                      </div>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex flex-1 items-center justify-center rounded-lg border-2 border-gray-300 px-4 py-2 text-center text-sm font-medium text-gray-700 transition-colors hover:border-blue-600 hover:text-blue-600 dark:border-gray-600 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+                      >
+                        Source Code
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -274,15 +329,15 @@ export default function Projects() {
           </div>
 
           {/* Call to Action */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <motion.div variants={itemVariants} className="mt-16 text-center">
+            <p className="mb-6 text-gray-600 dark:text-gray-400">
               Interested in seeing more of my work?
             </p>
             <a
               href="https://github.com/martins-o"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+              className="inline-flex cursor-pointer items-center rounded-lg bg-gray-900 px-6 py-3 font-medium text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
             >
               <Github size={20} className="mr-2" />
               View All Projects on GitHub
@@ -291,5 +346,5 @@ export default function Projects() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

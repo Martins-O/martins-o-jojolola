@@ -70,17 +70,15 @@ export default function Hero() {
               variants={itemVariants}
               className="mb-6 text-xl font-medium text-gray-600 sm:text-2xl lg:text-3xl dark:text-gray-300"
             >
-              QA Engineer | Backend Developer | Blockchain Developer
+              Smart Contract Engineer | Full-Stack Developer | Web3 Builder
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
               className="mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400"
             >
-              I ensure software quality through comprehensive testing, build
-              robust backend systems, and develop cutting-edge blockchain
-              solutions using Solidity, Rust, and Cairo. Bridging Web2 and Web3
-              technologies to create secure, scalable applications.
+              Building the infrastructure of Web3 — from smart contracts to
+              production-grade backends. 10+ hackathons across 7+ ecosystems.
             </motion.p>
 
             <motion.div
