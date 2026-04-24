@@ -44,21 +44,21 @@ export default function Projects() {
         'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop',
       categories: ['infrastructure', 'hackathon'],
       tags: ['Rust', 'Stylus', 'TypeScript'],
-      demoUrl: '',
+      demoUrl: 'https://arbilink-docs.vercel.app/',
       githubUrl: 'https://github.com/Martins-O/arbilink',
       features: ['Cross-chain messaging', 'Arbitrum Stylus', 'Smart Contracts'],
     },
     {
       id: 2,
-      title: 'TrustVault',
+      title: 'Educore',
       description:
-        'Decentralized document notarization. Integrates Flow EVM, Filecoin/Storacha, Lit Protocol, NEAR. Built during PL Genesis hackathon.',
+        'A multi-tenant, SaaS-based School Management System targeting primary and secondary schools. Built with Next.js 14, MongoDB, TypeScript, and Tailwind CSS.',
       image:
         'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=400&fit=crop',
-      categories: ['smart-contracts', 'hackathon'],
-      tags: ['Solidity', 'TypeScript'],
-      demoUrl: '',
-      githubUrl: '',
+      categories: ['infrastructure', 'full-stack'],
+      tags: ['Next.JS', 'TypeScript'],
+      demoUrl: 'https://school-management-xi-bay.vercel.app/',
+      githubUrl: 'https://github.com/Martins-O/school-management.git',
       features: [
         'Document Notarization',
         'Decentralized Storage',
@@ -75,7 +75,7 @@ export default function Projects() {
       categories: ['defi', 'smart-contracts'],
       tags: ['Solidity', 'Node.js'],
       demoUrl: '',
-      githubUrl: '',
+      githubUrl: 'https://github.com/Martins-O/Liquifi.git',
       features: ['AI Factoring', 'DeFi Protocol', 'Mantle L2'],
     },
     {
@@ -93,7 +93,7 @@ export default function Projects() {
         'tRPC',
         'NextAuth',
       ],
-      demoUrl: '',
+      demoUrl: 'https://ems-six-eta.vercel.app/',
       githubUrl: 'https://github.com/Martins-O/factory-ems',
       features: [
         'Employee Management',
@@ -110,7 +110,7 @@ export default function Projects() {
       categories: ['infrastructure', 'smart-contracts'],
       tags: ['Solidity', 'TypeScript'],
       demoUrl: '',
-      githubUrl: '',
+      githubUrl: 'https://github.com/Martins-O/ChainGuard.git',
       features: ['AI Monitoring', 'Avalanche Subnets', 'Real-time Security'],
     },
     {
@@ -122,26 +122,26 @@ export default function Projects() {
       categories: ['defi', 'infrastructure'],
       tags: ['Rust', 'TypeScript'],
       demoUrl: '',
-      githubUrl: '',
+      githubUrl: 'https://github.com/Martins-O/agent-pay-hub.git',
       features: [
         'Payment Orchestration',
         'MCP/x402 protocol',
         'Solana Network',
       ],
     },
-    {
-      id: 7,
-      title: 'MobileKit',
-      description:
-        'Open-source mobile Web3 SDK for React Native and Flutter via deep linking. (in-progress)',
-      image:
-        'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
-      categories: ['infrastructure', 'full-stack'],
-      tags: ['TypeScript'],
-      demoUrl: '',
-      githubUrl: '',
-      features: ['Web3 SDK', 'React Native / Flutter', 'Deep linking'],
-    },
+    // {
+    //   id: 7,
+    //   title: 'MobileKit',
+    //   description:
+    //     'Open-source mobile Web3 SDK for React Native and Flutter via deep linking. (in-progress)',
+    //   image:
+    //     'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop',
+    //   categories: ['infrastructure', 'full-stack'],
+    //   tags: ['TypeScript'],
+    //   demoUrl: '',
+    //   githubUrl: '',
+    //   features: ['Web3 SDK', 'React Native / Flutter', 'Deep linking'],
+    // },
     {
       id: 8,
       title: 'SkillChain / Veriforge',
@@ -151,7 +151,7 @@ export default function Projects() {
         'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
       categories: ['smart-contracts', 'full-stack'],
       tags: ['Solidity', 'TypeScript'],
-      demoUrl: '',
+      demoUrl: 'https://skilchain.vercel.app/',
       githubUrl: '',
       features: ['Skill Verification', 'Blockchain Attestation'],
     },
@@ -188,7 +188,7 @@ export default function Projects() {
             <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
               Featured Projects
             </h2>
-            <div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-blue-600 to-purple-600"></div>
+            <div className="mx-auto mb-6 h-1 w-24 bg-linear-to-r from-blue-600 to-purple-600"></div>
             <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-400">
               A showcase of my recent work, demonstrating expertise in various
               technologies and problem-solving approaches.
@@ -260,7 +260,7 @@ export default function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="flex flex-grow flex-col p-6">
+                <div className="flex grow flex-col p-6">
                   <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
                     {project.title}
                   </h3>

@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@hookform/resolvers": "^5.2.1",
     "class-variance-authority": "^0.7.1",
     "framer-motion": "^12.23.12",

@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useForm as useFormspree } from '@formspree/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
@@ -31,10 +32,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    'idle' | 'success' | 'error'
-  >('idle');
+  const [state, formspreeSubmit] = useFormspree('xwvdpvjk');
 
   const {
     register,
@@ -44,6 +42,12 @@ export default function Contact() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   });
+
+  useEffect(() => {
+    if (state.succeeded) {
+      reset();
+    }
+  }, [state.succeeded, reset]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,32 +115,7 @@ export default function Contact() {
   ];
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        reset();
-      } else {
-        const errorData = await response.json();
-        console.error('Form submission error:', errorData);
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    await formspreeSubmit(data);
   };
 
   return (
@@ -235,7 +214,7 @@ export default function Contact() {
                 </h3>
 
                 {/* Status Messages */}
-                {submitStatus === 'success' && (
+                {state.succeeded && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -251,7 +230,7 @@ export default function Contact() {
                   </motion.div>
                 )}
 
-                {submitStatus === 'error' && (
+                {state.errors && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -389,10 +368,10 @@ export default function Contact() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                     className="flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:bg-blue-400"
                   >
-                    {isSubmitting ? (
+                    {state.submitting ? (
                       <>
                         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
                         Sending...
