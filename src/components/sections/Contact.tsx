@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useForm as useFormspree } from '@formspree/react';
+import { useForm as useFormspree, ValidationError } from '@formspree/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {
@@ -242,6 +242,11 @@ export default function Contact() {
                     />
                     <span className="text-red-800 dark:text-red-300">
                       Failed to send message. Please try again.
+                      {state.errors && (
+                        <div className="mt-2 text-sm text-red-600 dark:text-red-400">
+                          <ValidationError errors={state.errors} />
+                        </div>
+                      )}
                     </span>
                   </motion.div>
                 )}
